@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\MovementController;
+use App\Http\Controllers\Api\GoogleMapController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +26,13 @@ Route::post('login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->post('logout', [AuthController::class, 'logout']);
 
 Route::middleware('auth:sanctum')->get('/movements-for-map', [GoogleMapController::class, 'getMovementsForMap']);
+
+
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('movements', [MovementController::class, 'index']);
+    Route::post('movements', [MovementController::class, 'store']);
+    Route::get('movements/{id}', [MovementController::class, 'show']);
+    Route::put('movements/{id}', [MovementController::class, 'update']);
+    Route::delete('movements/{id}', [MovementController::class, 'destroy']);
+});
