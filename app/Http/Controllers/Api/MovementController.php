@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
+
 use App\Models\Mouvement;
 use App\Models\Person;
 use Illuminate\Http\Request;

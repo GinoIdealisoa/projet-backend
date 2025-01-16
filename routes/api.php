@@ -29,7 +29,7 @@ Route::middleware('auth:sanctum')->get('/movements-for-map', [GoogleMapControlle
 
 
 
-Route::middleware('auth:api')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
     Route::get('movements', [MovementController::class, 'index']);
     Route::post('movements', [MovementController::class, 'store']);
     Route::get('movements/{id}', [MovementController::class, 'show']);
